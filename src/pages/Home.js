@@ -2,6 +2,7 @@ import React from 'react';
 // import FunctionalComponent from '../components/FunctionalComponent';
 import QuantityInput from '../components/QuantityInput';
 import ListGroup from '../components/ListGroup';
+import { connect } from 'react-redux';
 
 class Home extends React.Component {
     constructor(props) {
@@ -9,6 +10,8 @@ class Home extends React.Component {
         this.state = {
             counts: []
         }
+
+        console.log(this.props);
         this.getQuantityInputs = this.getQuantityInputs.bind(this);
         this.handleQuantityChange = this.handleQuantityChange.bind(this);
     }
@@ -30,6 +33,9 @@ class Home extends React.Component {
         return (
             <>
                 <h1>Home Page!</h1>
+                <button onClick={() => {
+                    this.props.setCounter(5);
+                }} className="btn btn-primary">Global Count: {this.props.counter}</button>
                 <div className="row mt-4">
                     <div className="col-lg-3">
                         <QuantityInput initialCount={0} onChange={this.handleQuantityChange} />
@@ -49,4 +55,16 @@ class Home extends React.Component {
         )
     }
 }
-export default Home;
+
+const mapStateToProps = state => ({
+    counter: state.counter
+});
+const setCount = count => ({
+    type: 'INCREMENT_COUNT',
+    payload: count
+});
+const mapDispatchToProps = dispatch => ({
+    setCounter: count => dispatch(setCount(count))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

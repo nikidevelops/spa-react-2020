@@ -5,7 +5,11 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 const ListGroupComponent = props => {
     const [movies, setMovies] = useState([]);
 
-    const fetchData = async () => {
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    async function fetchData() {
         let response = await fetch(
             'https://facebook.github.io/react-native/movies.json',
         );
@@ -14,9 +18,6 @@ const ListGroupComponent = props => {
             setMovies(responseJson.movies);
         }
     };
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     if (!movies.length) return null;
     return (

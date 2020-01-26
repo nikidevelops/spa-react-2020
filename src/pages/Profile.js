@@ -1,11 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 
 class Profile extends React.Component {
     render() {
         return (
-            <h1>Profile Page!</h1>
+            <>
+                <h1>Profile Page!</h1>
+                <p>{this.props.counter}</p>
+            </>
         )
     }
 }
-export default Profile;
+const mapStateToProps = ({ counter }) => ({
+    counter
+})
+export default connect(mapStateToProps)(Profile);

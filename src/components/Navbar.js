@@ -20,7 +20,8 @@ const NavbarComponent = (props) => {
         <Navbar color="light" light expand="md" className="mb-4">
             <Container>
                 <NavbarBrand tag={RRNavLink} exact to="/">
-                    <span role="img" area-label="fire">🔥</span></NavbarBrand>
+                    <span role="img" area-label="Fire">🔥</span>
+                </NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
