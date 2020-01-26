@@ -1,6 +1,7 @@
 import React from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { connect } from 'react-redux';
+import TitleInput from '../components/TitleInput';
 
 
 class Users extends React.Component {
@@ -16,6 +17,12 @@ class Users extends React.Component {
         return (
             <>
                 <h1>Users Page!</h1>
+                <hr />
+                <div className="row">
+                    <div className="col-md-4">
+                        <TitleInput />
+                    </div>
+                </div>
                 <hr />
                 <ListGroup>
                     {movies.map(({ id, title }) => {

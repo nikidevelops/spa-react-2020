@@ -18,4 +18,14 @@ const movies = function (movies = [], action) {
     }
 }
 
-export default combineReducers({ counter, movies });
+const testTitle = function (title = '', action) {
+    switch (action.type) {
+        case "SET_TEST_TITLE":
+            return action.payload;
+        default:
+            return title;
+    }
+}
+
+
+export default combineReducers({ counter, movies, testTitle });
